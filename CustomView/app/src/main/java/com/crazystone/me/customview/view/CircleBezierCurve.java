@@ -86,23 +86,24 @@ public class CircleBezierCurve extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        mPath.reset();
         canvas.translate(centerX, centerY);
         paint.setColor(Color.BLACK);
         drawCoordinate(canvas);
-//        drawControlLine(canvas);
+        drawControlLine(canvas);
         paint.setColor(Color.RED);
         drawBezierCircle(canvas);
 
         if (currentTime <= DEFAULT_DURATION) {
-            dataPoints[0].y += 1.2;
-            controlPoints[3].y -= 0.8;
-            controlPoints[4].y -= 0.8;
+            dataPoints[0].y += 1.0;
+//            controlPoints[0].y -= 1.2;
+//            controlPoints[7].y -= 1.2;
 
+//            controlPoints[3].y -= 0.1;
+//            controlPoints[4].y -= 0.1;
+//
             controlPoints[2].x -= 0.2;
             controlPoints[5].x += 0.2;
-
-            controlPoints[1].x += 0.05;
-            controlPoints[6].x -= 0.05;
 
             currentTime += PER;
             postInvalidateDelayed(PER);
@@ -112,7 +113,7 @@ public class CircleBezierCurve extends View {
 
     private void drawControlLine(Canvas canvas) {
 
-        canvas.drawLine(dataPoints[0].x, dataPoints[0].y, controlPoints[0].x, dataPoints[0].y, paint);
+        canvas.drawLine(dataPoints[0].x, dataPoints[0].y, controlPoints[0].x, controlPoints[0].y, paint);
         canvas.drawLine(controlPoints[1].x, controlPoints[1].y, dataPoints[1].x, dataPoints[1].y, paint);
         canvas.drawLine(dataPoints[1].x, dataPoints[1].y, controlPoints[2].x, controlPoints[2].y, paint);
         canvas.drawLine(controlPoints[3].x, controlPoints[3].y, dataPoints[2].x, dataPoints[2].y, paint);
