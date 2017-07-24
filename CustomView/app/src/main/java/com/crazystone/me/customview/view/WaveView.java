@@ -6,13 +6,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.view.inputmethod.CursorAnchorInfo;
+
+import com.crazystone.me.customview.utils.Windows;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by crazy_stone on 17-5-19.
@@ -23,7 +28,9 @@ public class WaveView extends View {
     /**
      * 最大振幅
      */
-    private static final int DEFAULT_WAVE_HEIGHT = 100;
+    private static final int DEFAULT_WAVE_HEIGHT = 30;
+    private static final int DEFAULT_VIEW_SIZE = 300;
+    public int maxProgress = 70;
     Paint paint;
     Path wavePath;
     Path circlePath;
@@ -34,6 +41,7 @@ public class WaveView extends View {
     private int waveLen;
     private int progress = 50;
     private int circleRadius = 0;
+    private ProgressHandler progressHandler;
 
     public WaveView(Context context) {
         super(context);
@@ -57,6 +65,7 @@ public class WaveView extends View {
 
         wavePath = new Path();
         circlePath = new Path();
+        progressHandler = new ProgressHandler(this);
     }
 
     @Override
@@ -71,6 +80,23 @@ public class WaveView extends View {
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+
+        int viewHeight = MeasureSpec.EXACTLY == heightMode ? heightSize : DEFAULT_VIEW_SIZE;
+        int viewWidth = MeasureSpec.EXACTLY == widthMode ? widthSize : DEFAULT_VIEW_SIZE;
+        int size = Math.min(viewHeight, viewWidth);
+        Log.d(WaveView.class.getSimpleName(), "size:" + size + ",width:" + viewWidth + ",height:" + viewHeight);
+        Log.d(WaveView.class.getSimpleName(), "window width:" + Windows.getScreenWidth(getContext()) + ",height:" + Windows.getScreenHeight(getContext()));
+        setMeasuredDimension(size, size);
+
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
 
         wavePath.reset();
@@ -78,8 +104,15 @@ public class WaveView extends View {
 
         drawCircle(canvas, Color.MAGENTA);
         drawWave(canvas);
+        drawPercentageText(canvas);
 
     }
+
+    private void drawPercentageText(Canvas canvas) {
+
+
+    }
+
 
     private void drawWave(Canvas canvas) {
         if (progress == 0) return;
@@ -114,8 +147,17 @@ public class WaveView extends View {
 //        canvas.drawPath(circlePath, paint);
     }
 
+    public int getMaxProgress() {
+        return maxProgress;
+    }
+
+    public WaveView setMaxProgress(int maxProgress) {
+        this.maxProgress = maxProgress;
+        return this;
+    }
 
     public void start() {
+        resetAnim();
         showAnim();
     }
 
@@ -160,5 +202,36 @@ public class WaveView extends View {
         });
     }
 
+    private void resetAnim() {
+        if (animator != null && animator.isRunning()) {
+            animator.cancel();
+            animator = null;
+        }
+    }
+
+    private static class ProgressHandler extends Handler {
+
+        private WeakReference<WaveView> ref;
+        private int currentProgress = 0;
+
+        public ProgressHandler(WaveView waveView) {
+            ref = new WeakReference<>(waveView);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (ref != null) {
+                WaveView waveView = ref.get();
+                if (waveView != null) {
+                    if (currentProgress < waveView.getMaxProgress()) {
+                        currentProgress += 1;
+                        waveView.setProgress(currentProgress);
+                        waveView.postInvalidate();
+                    }
+                }
+            }
+        }
+    }
 
 }

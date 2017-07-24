@@ -6,12 +6,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
-import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
+ * 用bezier画圆
  * Created by crazy_stone on 17-5-17.
  */
 

@@ -6,35 +6,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:id="@+id/txt_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="start" />
+        <!--<TextView-->
+            <!--android:id="@+id/txt_start"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="start" />-->
 
-        <TextView
-            android:id="@+id/txt_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:text="stop" />
+        <!--<TextView-->
+            <!--android:id="@+id/txt_stop"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="50dp"-->
+            <!--android:text="stop" />-->
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <SeekBar
-        android:id="@+id/seekbar_height"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content" />
+    <!--<SeekBar-->
+        <!--android:id="@+id/seekbar_height"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="wrap_content" />-->
 
-    <com.crazystone.me.customview.view.WaveView
-        android:id="@+id/view_wave"
+    <!--<com.crazystone.me.customview.view.WaveView-->
+        <!--android:id="@+id/view_wave"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/txt_practice_draw"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="jump2practiceDraw1" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/txt_practice_paint"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:text="practice_paint" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </LinearLayout>

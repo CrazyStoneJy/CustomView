@@ -65,7 +65,6 @@ public class BezierTestView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         canvas.translate(width / 2, height / 2);
 
         drawCoordinate(canvas);

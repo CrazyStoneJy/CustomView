@@ -3,6 +3,7 @@
     package="com.crazystone.me.customview">
 
     <application
+        android:name=".CustomApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".XferModeActivity" />
+        <activity android:name=".TestActivity" />
+        <activity
+            android:name=".practice_draw.PracticeDrawActivity"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".practice_paint.PracticePaintActivity"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".CustomViewActivity"
+            android:hardwareAccelerated="false" />
     </application>
 
 </manifest>
