@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.crazystone.me.customview.practice_draw.PracticeDrawActivity;
 import com.crazystone.me.customview.practice_draw.PracticeDrawPieChartView;
+import com.crazystone.me.customview.practice_draw_text.DrawTextActivity;
 import com.crazystone.me.customview.practice_paint.PracticePaintActivity;
+import com.crazystone.me.customview.test.EventBusTestActivity;
 import com.crazystone.me.customview.view.WaveView;
 
 import java.util.ArrayList;
@@ -42,52 +44,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-//        txt_start = (TextView) findViewById(R.id.txt_start);
-//        txt_stop = (TextView) findViewById(R.id.txt_stop);
-//        waveView = (WaveView) findViewById(R.id.view_wave);
-//        seekBar = (SeekBar) findViewById(R.id.seekbar_height);
-//        txt_start.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                waveView.start();
-//            }
-//        });
-//        txt_stop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                waveView.stop();
-//            }
-//        });
-//        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                waveView.setProgress(progress);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//        });
-//        txt_practice_draw1 = (TextView) findViewById(R.id.txt_practice_draw);
-//        txt_practice_draw1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, PracticeDrawActivity.class));
-//            }
-//        });
-//        txt_practice_paint = (TextView) findViewById(R.id.txt_practice_paint);
-//        txt_practice_paint.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, PracticePaintActivity.class));
-//            }
-//        });
 
         recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -101,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemData().setName("PracticeDraw").setJump2Cls(PracticeDrawActivity.class));
         list.add(new ItemData().setName("PracticePaint").setJump2Cls(PracticePaintActivity.class));
         list.add(new ItemData().setName("customViewTest").setJump2Cls(CustomViewActivity.class));
+        list.add(new ItemData().setName("EventBusTest").setJump2Cls(EventBusTestActivity.class));
+        list.add(new ItemData().setName("PracticeDrawText").setJump2Cls(DrawTextActivity.class));
         return list;
     }
 
@@ -149,20 +107,20 @@ public class MainActivity extends AppCompatActivity {
         private String name;
         private Class jump2Cls;
 
-        public String getName() {
+        String getName() {
             return name;
         }
 
-        public ItemData setName(String name) {
+        ItemData setName(String name) {
             this.name = name;
             return this;
         }
 
-        public Class getJump2Cls() {
+        Class getJump2Cls() {
             return jump2Cls;
         }
 
-        public ItemData setJump2Cls(Class jump2Cls) {
+        ItemData setJump2Cls(Class jump2Cls) {
             this.jump2Cls = jump2Cls;
             return this;
         }

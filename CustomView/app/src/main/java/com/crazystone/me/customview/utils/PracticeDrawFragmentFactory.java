@@ -60,5 +60,25 @@ public class PracticeDrawFragmentFactory {
         return list;
     }
 
+    public static List<BaseFragmentEntity> getDrawTextList() {
+        List<BaseFragmentEntity> list = new ArrayList<>();
+        list.add(new BaseFragmentEntity().setTitle("DrawText").setLayoutRes(R.layout.view_practice_draw_text));
+        list.add(new BaseFragmentEntity().setTitle("StaticLayout").setLayoutRes(R.layout.view_practice_static_layout));
+        list.add(new BaseFragmentEntity().setTitle("SetTextSize").setLayoutRes(R.layout.view_practice_set_text_size));
+        list.add(new BaseFragmentEntity().setTitle("SetTypeFace").setLayoutRes(R.layout.view_practice_set_typeface));
+        list.add(new BaseFragmentEntity().setTitle("SetFakeBoldText").setLayoutRes(R.layout.view_set_fake_bold_text));
+        list.add(new BaseFragmentEntity().setTitle("SetStrokeThruText").setLayoutRes(R.layout.view_practice_set_stroke_thru_text));
+        list.add(new BaseFragmentEntity().setTitle("SetUnderLineText").setLayoutRes(R.layout.view_practice_set_underline_text));
+        list.add(new BaseFragmentEntity().setTitle("SetTextSkewX").setLayoutRes(R.layout.view_practice_set_text_skew_x));
+        list.add(new BaseFragmentEntity().setTitle("SetTextScaleX").setLayoutRes(R.layout.view_practice_set_text_scale_x));
+        list.add(new BaseFragmentEntity().setTitle("SetTextAlign").setLayoutRes(R.layout.view_practice_set_text_align));
+        list.add(new BaseFragmentEntity().setTitle("getFontSpacing").setLayoutRes(R.layout.view_practice_get_font_spacing));
+        list.add(new BaseFragmentEntity().setTitle("measureText").setLayoutRes(R.layout.view_practice_measure_text));
+        list.add(new BaseFragmentEntity().setTitle("getTextBounds").setLayoutRes(R.layout.view_practice_get_text_bounds));
+        list.add(new BaseFragmentEntity().setTitle("getFontMetrics").setLayoutRes(R.layout.view_practice_get_font_metrics));
+
+        return list;
+    }
+
 
 }

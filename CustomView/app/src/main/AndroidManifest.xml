@@ -29,6 +29,9 @@
         <activity
             android:name=".CustomViewActivity"
             android:hardwareAccelerated="false" />
+        <activity android:name=".test.SecondActivity" />
+        <activity android:name=".test.EventBusTestActivity" />
+        <activity android:name=".practice_draw_text.DrawTextActivity"/>
     </application>
 
 </manifest>
