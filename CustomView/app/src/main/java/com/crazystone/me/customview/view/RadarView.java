@@ -40,7 +40,7 @@ public class RadarView extends View {
     float radians;
     Random random = new Random();
     int maxRadius;
-    private Paint mPaint, overLayPaint, circlePaint;
+    private Paint mPaint, overLayPaint, circlePaint, textPaint;
     private int centerWidth = 0, centerHeight;
     private Path path;
     private List<IChartData> list = new ArrayList<>();
@@ -74,6 +74,10 @@ public class RadarView extends View {
         circlePaint.setStyle(Paint.Style.FILL);
         circlePaint.setColor(Views.getColorInt(getContext(), R.color.blue));
 
+        textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        textPaint.setColor(Color.BLACK);
+        textPaint.setStyle(Paint.Style.FILL);
+
         path = new Path();
         radians = (float) (Math.PI * (360F / EDGE_COUNT) / 180F);
         initData();
@@ -106,7 +110,7 @@ public class RadarView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.translate(centerWidth, centerHeight);
         //将起始坐标摆放在纵坐标轴
-        canvas.rotate(270);
+//        canvas.rotate(270);
         drawSpiderNet(canvas);
         drawAuxiliaryLine(canvas);
         drawValuePoint(canvas);
@@ -127,8 +131,10 @@ public class RadarView extends View {
                 }
                 canvas.drawCircle(x, y, 5, circlePaint);
                 //draw text value
-                mPaint.setTextSize(30);
-                canvas.drawText(list.get(i).getValueName(), (float) (Math.cos(radians * i) * maxRadius) * TEXT_RADIO, TEXT_RADIO * (float) (Math.sin(radians * i) * maxRadius), mPaint);
+                textPaint.setTextSize(40);
+                String valueName = list.get(i).getValueName();
+                float valueWidth = textPaint.measureText(valueName);
+                canvas.drawText(valueName, (float) (Math.cos(radians * i) * maxRadius) * TEXT_RADIO - (valueWidth / 2F), TEXT_RADIO * (float) (Math.sin(radians * i) * maxRadius), textPaint);
             }
             path.close();
             canvas.drawPath(path, overLayPaint);

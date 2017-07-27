@@ -62,5 +62,9 @@ public class GetFontMetricsView extends CustomView {
             float y = values[i] + 200;
             canvas.drawLine(0, y, width, y, mPaint);
         }
+
+        mPaint.setColor(Color.BLACK);
+        canvas.drawLine(0, 200, width, 200, mPaint);
+
     }
 }

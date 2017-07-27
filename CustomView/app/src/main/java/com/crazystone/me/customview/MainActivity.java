@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemData().setName("customViewTest").setJump2Cls(CustomViewActivity.class));
         list.add(new ItemData().setName("EventBusTest").setJump2Cls(EventBusTestActivity.class));
         list.add(new ItemData().setName("PracticeDrawText").setJump2Cls(DrawTextActivity.class));
+        list.add(new ItemData().setName("CalendarView").setJump2Cls(CalendarViewActivity.class));
         return list;
     }
 

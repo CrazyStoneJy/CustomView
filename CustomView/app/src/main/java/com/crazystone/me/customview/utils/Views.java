@@ -24,4 +24,10 @@ public class Views {
         return getColorInt(Contexts.getContext(), colorRes);
     }
 
+    public static float px2dp() {
+//        Contexts.getContext();
+        return 0;
+    }
+
+
 }
