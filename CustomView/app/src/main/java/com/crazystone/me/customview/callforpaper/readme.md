@@ -8,4 +8,4 @@
 
   完成效果图
 
-  ![完成效果](http://or5n6ccgu.bkt.clouddn.com/17-10-19/99829721.jpg)
+  ![完成效果](./jike.gif)
