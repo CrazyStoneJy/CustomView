@@ -1,4 +1,4 @@
-package com.crazystone.me.customview;
+package com.crazystone.me.customview.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.crazystone.me.customview.R;
 import com.crazystone.me.customview.view.LeavesView;
 
 /**

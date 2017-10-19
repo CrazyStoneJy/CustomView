@@ -80,5 +80,45 @@ public class PracticeDrawFragmentFactory {
         return list;
     }
 
+    public static List<BaseFragmentEntity> getDraw4List() {
+        List<BaseFragmentEntity> list = new ArrayList<>();
+        list.add(new BaseFragmentEntity().setTitle("clipRect").setLayoutRes(R.layout.view_practice_clip_rect));
+        list.add(new BaseFragmentEntity().setTitle("ClipPath").setLayoutRes(R.layout.view_practice_clip_path));
+        list.add(new BaseFragmentEntity().setTitle("translate").setLayoutRes(R.layout.view_practice_translate));
+        list.add(new BaseFragmentEntity().setTitle("scale").setLayoutRes(R.layout.view_practice_scale));
+        list.add(new BaseFragmentEntity().setTitle("rotate").setLayoutRes(R.layout.view_practice_rotate));
+        list.add(new BaseFragmentEntity().setTitle("skew").setLayoutRes(R.layout.view_practice_skew));
+        list.add(new BaseFragmentEntity().setTitle("MatrixTranslate").setLayoutRes(R.layout.view_practice_matrix_translate));
+        list.add(new BaseFragmentEntity().setTitle("MatrixScale").setLayoutRes(R.layout.view_practice_matrix_scale));
+        list.add(new BaseFragmentEntity().setTitle("MatrixRotate").setLayoutRes(R.layout.view_practice_matrix_rotate));
+        list.add(new BaseFragmentEntity().setTitle("MatrixSkew").setLayoutRes(R.layout.view_practice_matrix_skew));
+        list.add(new BaseFragmentEntity().setTitle("CameraRotate").setLayoutRes(R.layout.view_practice_camera_rotate));
+        list.add(new BaseFragmentEntity().setTitle("CameraFixedRotate").setLayoutRes(R.layout.view_practice_fixed_rotate));
+        list.add(new BaseFragmentEntity().setTitle("FlipBoard").setLayoutRes(R.layout.view_practice_flip_board));
+        return list;
+    }
+
+    public static List<BaseFragmentEntity> getPractice6List() {
+        List<BaseFragmentEntity> list = new ArrayList<>();
+        list.add(new BaseFragmentEntity().setTitle("translation").setLayoutRes(R.layout.view_practice_animation_translation));
+        list.add(new BaseFragmentEntity().setTitle("rotation").setLayoutRes(R.layout.view_practice_animation_rotation));
+        list.add(new BaseFragmentEntity().setTitle("scale").setLayoutRes(R.layout.view_practice_animation_scale));
+        list.add(new BaseFragmentEntity().setTitle("alpha").setLayoutRes(R.layout.view_practice_animation_alpha));
+        list.add(new BaseFragmentEntity().setTitle("multiProperties").setLayoutRes(R.layout.view_practice_animation_multi));
+        list.add(new BaseFragmentEntity().setTitle("duration").setLayoutRes(R.layout.view_practice_animation_duration));
+        list.add(new BaseFragmentEntity().setTitle("interpolator").setLayoutRes(R.layout.view_practice_animation_interpolator));
+        list.add(new BaseFragmentEntity().setTitle("progress").setLayoutRes(R.layout.view_practice_animation_progress));
+        return list;
+    }
+
+    public static List<BaseFragmentEntity> getCallForPaperList() {
+        List<BaseFragmentEntity> list = new ArrayList<>();
+        list.add(new BaseFragmentEntity().setTitle("jike").setLayoutRes(R.layout.view_jike));
+        list.add(new BaseFragmentEntity().setTitle("boheRule").setLayoutRes(R.layout.view_bohe_rule));
+        list.add(new BaseFragmentEntity().setTitle("xiaomisport").setLayoutRes(R.layout.view_xioami_sports));
+        list.add(new BaseFragmentEntity().setTitle("flipboard").setLayoutRes(R.layout.view_practice_flip_board));
+        return list;
+    }
+
 
 }

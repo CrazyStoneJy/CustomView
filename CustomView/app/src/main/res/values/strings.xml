@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">CustomView</string>
+    <string name="animate">animate</string>
+
+    <array name="interpolators">
+        <item>AccelerateDecelerate</item>
+        <item>Linear</item>
+        <item>Accelerate</item>
+        <item>Decelerate</item>
+        <item>AnticipateInter</item>
+        <item>Overshoot</item>
+        <item>AnticipateOvershoot</item>
+        <item>Bounce</item>
+        <item>Cycle</item>
+        <item>Path</item>
+        <item>FastOutLinear</item>
+        <item>FastOutSlow</item>
+        <item>LinearOutSlow</item>
+        <item>Custom</item>
+    </array>
+
 </resources>

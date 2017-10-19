@@ -1,5 +1,6 @@
 package com.crazystone.me.customview.view;
 
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.crazystone.me.customview.R;
+import com.crazystone.me.customview.utils.Views;
 import com.crazystone.me.customview.utils.Windows;
 
 import java.lang.ref.WeakReference;
@@ -34,14 +37,15 @@ public class WaveView extends View {
     Paint paint;
     Path wavePath;
     Path circlePath;
-    ValueAnimator animator;
+    ValueAnimator cycleAnimator;
+    ObjectAnimator progressAnimator;
     private int width, height;
     private int centerY, centerX;
     private int offset = 0;
     private int waveLen;
     private int progress = 50;
     private int circleRadius = 0;
-    private ProgressHandler progressHandler;
+//    private ProgressHandler progressHandler;
 
     public WaveView(Context context) {
         super(context);
@@ -65,7 +69,7 @@ public class WaveView extends View {
 
         wavePath = new Path();
         circlePath = new Path();
-        progressHandler = new ProgressHandler(this);
+//        progressHandler = new ProgressHandler(this);
     }
 
     @Override
@@ -102,7 +106,7 @@ public class WaveView extends View {
         wavePath.reset();
         circlePath.reset();
 
-        drawCircle(canvas, Color.MAGENTA);
+        drawCircle(canvas, Views.getColorInt(R.color.colorAccent));
         drawWave(canvas);
         drawPercentageText(canvas);
 
@@ -117,10 +121,10 @@ public class WaveView extends View {
     private void drawWave(Canvas canvas) {
         if (progress == 0) return;
         if (progress == 100) {
-            drawCircle(canvas, Color.CYAN);
+            drawCircle(canvas, Views.getColorInt(R.color.colorAccent));
             return;
         }
-        paint.setColor(Color.CYAN);
+        paint.setColor(Views.getColorInt(R.color.colorPrimary));
         wavePath.moveTo(-waveLen + offset, getWaveHeight());
         for (int i = -waveLen; i <= width; i += waveLen) {
             wavePath.quadTo(width / 4 + i + offset, getWaveHeight() - DEFAULT_WAVE_HEIGHT, width / 2 + i + offset, getWaveHeight());
@@ -162,9 +166,9 @@ public class WaveView extends View {
     }
 
     public void stop() {
-        if (animator != null && animator.isRunning()) {
-            animator.cancel();
-            animator = null;
+        if (cycleAnimator != null && cycleAnimator.isRunning()) {
+            cycleAnimator.cancel();
+            cycleAnimator = null;
         }
     }
 
@@ -174,6 +178,7 @@ public class WaveView extends View {
 
     public WaveView setOffset(int offset) {
         this.offset = offset;
+//        invalidate();
         return this;
     }
 
@@ -183,29 +188,40 @@ public class WaveView extends View {
 
     public WaveView setProgress(int progress) {
         this.progress = progress;
-        invalidate();
+//        invalidate();
         return this;
     }
 
     private void showAnim() {
-        animator = ValueAnimator.ofInt(0, waveLen);
-        animator.setDuration(2000);
-        animator.setRepeatCount(Integer.MAX_VALUE);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.start();
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        cycleAnimator = ValueAnimator.ofInt(0, waveLen);
+        cycleAnimator.setDuration(2000);
+        cycleAnimator.setRepeatCount(Integer.MAX_VALUE);
+        cycleAnimator.setInterpolator(new LinearInterpolator());
+        cycleAnimator.start();
+        cycleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 setOffset((Integer) animation.getAnimatedValue());
-                invalidate();
             }
         });
+
+//        progressAnimator = ObjectAnimator.ofInt(this, "progress", 0, 65);
+//        progressAnimator.setDuration(2000).addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                setProgress((Integer) animation.getAnimatedValue());
+//            }
+//        });
+//        AnimatorSet set = new AnimatorSet();
+//        set.playTogether(cycleAnimator,progressAnimator);
+
+//        progressAnimator.start();
     }
 
     private void resetAnim() {
-        if (animator != null && animator.isRunning()) {
-            animator.cancel();
-            animator = null;
+        if (cycleAnimator != null && cycleAnimator.isRunning()) {
+            cycleAnimator.cancel();
+            cycleAnimator = null;
         }
     }
 

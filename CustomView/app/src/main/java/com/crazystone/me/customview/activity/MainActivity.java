@@ -1,4 +1,4 @@
-package com.crazystone.me.customview;
+package com.crazystone.me.customview.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,28 +8,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.crazystone.me.customview.R;
+import com.crazystone.me.customview.practice6.PracticeBaseAnimationActivity;
 import com.crazystone.me.customview.practice_draw.PracticeDrawActivity;
-import com.crazystone.me.customview.practice_draw.PracticeDrawPieChartView;
 import com.crazystone.me.customview.practice_draw_text.DrawTextActivity;
 import com.crazystone.me.customview.practice_paint.PracticePaintActivity;
 import com.crazystone.me.customview.test.EventBusTestActivity;
-import com.crazystone.me.customview.view.WaveView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txt_start;
-    TextView txt_stop;
-    WaveView waveView;
-    SeekBar seekBar;
-    TextView txt_practice_draw1;
-    TextView txt_practice_paint;
-    PracticeDrawPieChartView pieChart;
+
     RecyclerView recyclerView;
 
 
@@ -59,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemData().setName("customViewTest").setJump2Cls(CustomViewActivity.class));
         list.add(new ItemData().setName("EventBusTest").setJump2Cls(EventBusTestActivity.class));
         list.add(new ItemData().setName("PracticeDrawText").setJump2Cls(DrawTextActivity.class));
+        list.add(new ItemData().setName("PracticeDraw4").setJump2Cls(PracticeDraw4Activity.class));
         list.add(new ItemData().setName("CalendarView").setJump2Cls(CalendarViewActivity.class));
+        list.add(new ItemData().setName("MatrixTest").setJump2Cls(MatrixTestActivity.class));
+        list.add(new ItemData().setName("PracticeBaseAnimation").setJump2Cls(PracticeBaseAnimationActivity.class));
+        list.add(new ItemData().setName("WaveView").setJump2Cls(WaveViewActivity.class));
+        list.add(new ItemData().setName("CallForPaper").setJump2Cls(CallforPaperActivity.class));
         return list;
     }
 

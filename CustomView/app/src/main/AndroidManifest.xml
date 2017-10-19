@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".XferModeActivity" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".activity.XferModeActivity" />
+        <activity android:name=".activity.TestActivity" />
         <activity
             android:name=".practice_draw.PracticeDrawActivity"
             android:hardwareAccelerated="false" />
@@ -27,12 +27,17 @@
             android:name=".practice_paint.PracticePaintActivity"
             android:hardwareAccelerated="false" />
         <activity
-            android:name=".CustomViewActivity"
+            android:name=".activity.CustomViewActivity"
             android:hardwareAccelerated="false" />
         <activity android:name=".test.SecondActivity" />
         <activity android:name=".test.EventBusTestActivity" />
-        <activity android:name=".practice_draw_text.DrawTextActivity"/>
-        <activity android:name=".CalendarViewActivity"/>
+        <activity android:name=".practice_draw_text.DrawTextActivity" />
+        <activity android:name=".activity.CalendarViewActivity" />
+        <activity android:name=".activity.PracticeDraw4Activity" />
+        <activity android:name=".activity.MatrixTestActivity" />
+        <activity android:name=".practice6.PracticeBaseAnimationActivity" />
+        <activity android:name=".activity.WaveViewActivity" />
+        <activity android:name=".activity.CallforPaperActivity" />
     </application>
 
 </manifest>

@@ -2,10 +2,10 @@ package com.crazystone.me.customview.view.calendar;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -13,7 +13,11 @@ import android.widget.TextView;
 
 import com.crazystone.me.customview.utils.Windows;
 
+import java.lang.ref.Reference;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by crazy_stone on 17-7-26.
@@ -25,6 +29,7 @@ public class CalendarView extends LinearLayout implements MonthView.ChangeMonthL
     MonthView monthView;
     TextView monthText;
     float touchX, touchY;
+    ViewPager viewPager;
 
     public CalendarView(Context context) {
         super(context);
@@ -109,44 +114,50 @@ public class CalendarView extends LinearLayout implements MonthView.ChangeMonthL
             monthLinear.addView(textView);
         }
 
+        viewPager = new ViewPager(getContext());
+//        viewPager.setAdapter();
+
         monthView = new MonthView(getContext());
         monthView.setChangeMonthListener(this);
         addView(monthView);
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        int action = event.getAction();
-        Log.d(CalendarView.class.getSimpleName(), "x:" + event.getX() + ",y:" + event.getY());
-        switch (action) {
-            case MotionEvent.ACTION_DOWN:
-                touchX = event.getX();
-                touchY = event.getY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-
-                float y = event.getY();
-                float x = event.getX();
-                if (x - touchX >= 50) {
-                    if (monthView != null)
-                        monthView.lastMonth();
-                } else if (x - touchX <= -50) {
-                    if (monthView != null)
-                        monthView.nextMonth();
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-
-                break;
-        }
+    private List<SoftReference<MonthView>> getList() {
+        List<SoftReference<MonthView>> list = new ArrayList<>();
+list.add(new SoftReference<MonthView>(new MonthView(getContext())));
 
 
-        return true;
+        return list;
     }
 
     @Override
     public void onChangeMonth(int year, int month) {
         monthText.setText(year + "年" + (month + 1) + "月");
+    }
+
+    class MonthAdapter extends PagerAdapter {
+
+        List<Reference<MonthView>> viewList;
+
+        public MonthAdapter(List<Reference<MonthView>> viewList) {
+            this.viewList = viewList;
+        }
+
+        @Override
+        public int getCount() {
+            return viewList != null ? viewList.size() : 0;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+//            super.destroyItem(container, position, object);
+        }
     }
 }

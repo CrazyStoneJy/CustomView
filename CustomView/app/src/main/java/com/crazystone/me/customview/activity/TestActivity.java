@@ -1,4 +1,4 @@
-package com.crazystone.me.customview;
+package com.crazystone.me.customview.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.crazystone.me.customview.R;
 import com.crazystone.me.customview.practice.ColorFilterView;
 import com.crazystone.me.customview.utils.ColorMatrixs;
 

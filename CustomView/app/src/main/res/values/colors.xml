@@ -10,5 +10,7 @@
     <color name="red">#EF5350</color>
     <color name="purple">#7E57C2</color>
     <color name="yellow">#FFEE58</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="transparent_blue">#662196F3</color>
 </resources>
