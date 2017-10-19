@@ -1,4 +1,4 @@
-package com.crazystone.me.customview.view.thumbView;
+package com.crazystone.me.customview.callforpaper;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

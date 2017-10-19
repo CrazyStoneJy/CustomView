@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.crazystone.me.customview.view.thumbView.JiKeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.crazystone.me.customview.callforpaper.JiKeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,27 +10,27 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.crazystone.me.customview.view.thumbView.JiKeAgreeView
+        <com.crazystone.me.customview.callforpaper.JiKeAgreeView
             android:id="@+id/view_wheel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.crazystone.me.customview.view.thumbView.JiKeAgreeView
+        <com.crazystone.me.customview.callforpaper.JiKeAgreeView
             android:id="@+id/view_wheel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.crazystone.me.customview.view.thumbView.JiKeAgreeView
+        <com.crazystone.me.customview.callforpaper.JiKeAgreeView
             android:id="@+id/view_wheel3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.crazystone.me.customview.view.thumbView.JiKeAgreeView
+        <com.crazystone.me.customview.callforpaper.JiKeAgreeView
             android:id="@+id/view_wheel4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.crazystone.me.customview.view.thumbView.JiKeAgreeView
+        <com.crazystone.me.customview.callforpaper.JiKeAgreeView
             android:id="@+id/view_wheel5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -38,4 +38,4 @@
     </LinearLayout>
 
 
-</com.crazystone.me.customview.view.thumbView.JiKeLayout>
+</com.crazystone.me.customview.callforpaper.JiKeLayout>
