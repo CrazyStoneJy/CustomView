@@ -1,4 +1,4 @@
-package com.crazystone.me.customview.practice_paint;
+package com.crazystone.me.customview.activity;
 
 import com.crazystone.me.customview.base.BaseActivity;
 import com.crazystone.me.customview.entity.BaseFragmentEntity;

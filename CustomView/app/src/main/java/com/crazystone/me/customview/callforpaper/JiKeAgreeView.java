@@ -107,7 +107,6 @@ public class JiKeAgreeView extends View {
         }
         canvas.drawBitmap(isActive ? selectBitmap : unselectedBitmap, 0, centerY - bitmapHeight / 2, paint);
         canvas.restore();
-
     }
 
     private void drawNumber(Canvas canvas) {

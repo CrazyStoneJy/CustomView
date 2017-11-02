@@ -62,6 +62,7 @@ public class PracticeDrawFragmentFactory {
 
     public static List<BaseFragmentEntity> getDrawTextList() {
         List<BaseFragmentEntity> list = new ArrayList<>();
+        list.add(new BaseFragmentEntity().setTitle("TextOnPath").setLayoutRes(R.layout.view_practice_text_on_path));
         list.add(new BaseFragmentEntity().setTitle("DrawText").setLayoutRes(R.layout.view_practice_draw_text));
         list.add(new BaseFragmentEntity().setTitle("StaticLayout").setLayoutRes(R.layout.view_practice_static_layout));
         list.add(new BaseFragmentEntity().setTitle("SetTextSize").setLayoutRes(R.layout.view_practice_set_text_size));

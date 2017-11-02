@@ -41,11 +41,12 @@ public class BitmapShaderView extends CustomView {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.drawColor(Views.getColorInt(R.color.colorAccent));
         canvas.translate(100, 200);
         mPaint.setShader(shader);
         canvas.drawCircle(150, 150, 150, mPaint);
         canvas.translate(400, 500);
-        mPaint.setColor(Views.getColorInt(R.color.red));
+//        mPaint.setColor(Views.getColorInt(R.color.red));
         canvas.drawRect(0, 0, 300, 200, mPaint);
     }
 }

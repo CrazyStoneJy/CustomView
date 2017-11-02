@@ -15,7 +15,7 @@ import com.crazystone.me.customview.R;
 
 public class CustomBitmapView extends CustomView {
 
-    protected Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.yellow_man);;
+    protected Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_maps);
 
     public CustomBitmapView(Context context) {
         super(context);

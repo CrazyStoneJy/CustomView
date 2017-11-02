@@ -2,6 +2,7 @@ package com.crazystone.me.customview.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -27,6 +28,10 @@ public class XfermodeView extends View {
     private PorterDuffXfermode porterDuffXfermode;
     private Bitmap circleBitmap, squareBitmap;
 
+    {
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
+    }
+
     public XfermodeView(Context context) {
         super(context);
         init();
@@ -48,6 +53,8 @@ public class XfermodeView extends View {
 
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setStyle(Paint.Style.STROKE);
+        circleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_red_cirlce);
+        squareBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_blue_rect);
     }
 
     private Bitmap getCircleBitmap() {
@@ -86,8 +93,8 @@ public class XfermodeView extends View {
         circleRadius = (int) ((float) (even * 3) / 2);
         squareSize = (int) (even * 2);
 
-        circleBitmap = getCircleBitmap();
-        squareBitmap = getSquareBitmap();
+//        circleBitmap = getCircleBitmap();
+//        squareBitmap = getSquareBitmap();
 
         setMeasuredDimension(size, size);
     }
@@ -98,20 +105,11 @@ public class XfermodeView extends View {
         textPaint.reset();
         if (info == null) return;
 
-        //创建一个图层，在图层上演示图形混合后的效果
-//        int sc = canvas.saveLayer(0, 0, size, size, null, Canvas.MATRIX_SAVE_FLAG |
-//                Canvas.CLIP_SAVE_FLAG |
-//                Canvas.HAS_ALPHA_LAYER_SAVE_FLAG |
-//                Canvas.FULL_COLOR_LAYER_SAVE_FLAG |
-//                Canvas.CLIP_TO_LAYER_SAVE_FLAG);
+        //创建一个图层，在图层上演示图形混合后的效果 (离屏缓冲)
         int saveCount = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG);
-
-        drawOutterRect(canvas);
-        canvas.translate(10, 10);
-        drawCircle(canvas);
-        porterDuffXfermode = new PorterDuffXfermode(info.getMode());
+        canvas.drawBitmap(squareBitmap,0,0,paint);
         paint.setXfermode(porterDuffXfermode);
-        drawRect(canvas);
+        canvas.drawBitmap(circleBitmap,0,0,paint);
         canvas.restoreToCount(saveCount);
 
     }
@@ -145,6 +143,7 @@ public class XfermodeView extends View {
 
     public XfermodeView setInfo(ModeInfo info) {
         this.info = info;
+        porterDuffXfermode = new PorterDuffXfermode(info.getMode());
         invalidate();
         return this;
     }

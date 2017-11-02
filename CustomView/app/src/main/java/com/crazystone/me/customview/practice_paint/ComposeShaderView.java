@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 
 import com.crazystone.me.customview.CustomView;
 import com.crazystone.me.customview.R;
+import com.crazystone.me.customview.utils.Views;
 
 /**
  * Created by crazy_stone on 17-7-20.
@@ -36,17 +37,23 @@ public class ComposeShaderView extends CustomView {
 
     @Override
     protected void init() {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.yellow_man);
-        Bitmap logoBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.logo1);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.batman);
+        Bitmap logoBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.batman_logo);
         BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         BitmapShader logoShader = new BitmapShader(logoBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
         composeShader = new ComposeShader(bitmapShader, logoShader, PorterDuff.Mode.SRC_OVER);
+        mPaint.setShader(composeShader);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
 
-        mPaint.setShader(composeShader);
-        canvas.drawCircle(500, 500, 500, mPaint);
+        canvas.drawColor(Views.getColorInt(R.color.colorAccent));
+        canvas.drawCircle(200, 200, 200, mPaint);
+
+//        canvas.translate(300, 300);
+//
+//        mPaint.setColor(Views.getColorInt(R.color.white));
+//        canvas.drawCircle(0, 0, 300, mPaint);
     }
 }

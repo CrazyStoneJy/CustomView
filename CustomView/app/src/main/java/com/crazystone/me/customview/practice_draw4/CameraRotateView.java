@@ -1,6 +1,8 @@
 package com.crazystone.me.customview.practice_draw4;
 
 import android.content.Context;
+import android.graphics.Camera;
+import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
@@ -9,6 +11,12 @@ import android.util.AttributeSet;
  */
 
 public class CameraRotateView extends CustomBitmapView {
+
+    Camera camera;
+    int bitmapX = bitmap.getWidth() / 2;
+    int bitmapY = bitmap.getHeight() / 2;
+
+
     public CameraRotateView(Context context) {
         super(context);
     }
@@ -21,8 +29,32 @@ public class CameraRotateView extends CustomBitmapView {
         super(context, attrs, defStyleAttr);
     }
 
+
     @Override
     protected void init() {
-        super.init();
+        camera = new Camera();
+
+
+        //        bitmapX =
+//                bitmapY = bitmap.getHeight() / 2;
     }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+
+        canvas.save();
+
+        camera.save();
+        camera.rotateX(45);
+        canvas.translate(bitmapX, bitmapY);
+        camera.applyToCanvas(canvas);
+        canvas.translate(-bitmapX, -bitmapY);
+        camera.restore();
+
+        canvas.drawBitmap(bitmap, 0, 0, mPaint);
+        canvas.restore();
+        canvas.translate(100, 0);
+
+    }
+
 }

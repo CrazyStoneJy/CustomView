@@ -13,9 +13,6 @@ import android.widget.TextView;
 import com.crazystone.me.customview.R;
 import com.crazystone.me.customview.practice6.PracticeBaseAnimationActivity;
 import com.crazystone.me.customview.practice_draw.PracticeDrawActivity;
-import com.crazystone.me.customview.practice_draw_text.DrawTextActivity;
-import com.crazystone.me.customview.practice_paint.PracticePaintActivity;
-import com.crazystone.me.customview.test.EventBusTestActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         List<ItemData> list = new ArrayList<>();
         list.add(new ItemData().setName("PracticeDraw").setJump2Cls(PracticeDrawActivity.class));
         list.add(new ItemData().setName("PracticePaint").setJump2Cls(PracticePaintActivity.class));
-        list.add(new ItemData().setName("customViewTest").setJump2Cls(CustomViewActivity.class));
-        list.add(new ItemData().setName("EventBusTest").setJump2Cls(EventBusTestActivity.class));
+//        list.add(new ItemData().setName("EventBusTest").setJump2Cls(EventBusTestActivity.class));
         list.add(new ItemData().setName("PracticeDrawText").setJump2Cls(DrawTextActivity.class));
         list.add(new ItemData().setName("PracticeDraw4").setJump2Cls(PracticeDraw4Activity.class));
         list.add(new ItemData().setName("CalendarView").setJump2Cls(CalendarViewActivity.class));
@@ -58,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ItemData().setName("PracticeBaseAnimation").setJump2Cls(PracticeBaseAnimationActivity.class));
         list.add(new ItemData().setName("WaveView").setJump2Cls(WaveViewActivity.class));
         list.add(new ItemData().setName("CallForPaper").setJump2Cls(CallforPaperActivity.class));
+        list.add(new ItemData().setName("customViewTest").setJump2Cls(CustomViewActivity.class));
         return list;
     }
 

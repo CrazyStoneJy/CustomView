@@ -36,16 +36,17 @@ public class GetFontMetricsView extends CustomView {
 
     @Override
     protected void init() {
-
+        mPaint.setAntiAlias(true);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        String str = "HelloWorld";
+        canvas.translate(0, 200);
+        String str = "HelloWorldjiayan";
         mPaint.setTextSize(150);
         mPaint.setStrokeWidth(3);
         mPaint.setColor(Color.BLACK);
-        canvas.drawText(str, 100, 200, mPaint);
+        canvas.drawText(str, 100, 0, mPaint);
 
         Paint.FontMetrics fontMetrics = mPaint.getFontMetrics();
 
@@ -53,18 +54,25 @@ public class GetFontMetricsView extends CustomView {
         values[1] = fontMetrics.bottom;
         values[2] = fontMetrics.descent;
         values[3] = fontMetrics.top;
+//        values[4] = fontMetrics.
         float leading = fontMetrics.leading;
+
 
         float width = Windows.getScreenWidth(getContext());
         Log.d(GetFontMetricsView.class.getSimpleName(), "ascent:" + values[0] + ",bottom:" + values[1] + ",descent:" + values[2] + ",top:" + values[3] + ",leading:" + leading);
         for (int i = 0; i < 4; i++) {
             mPaint.setColor(Views.getColorInt(colors[i]));
-            float y = values[i] + 200;
+            float y = values[i];
             canvas.drawLine(0, y, width, y, mPaint);
         }
 
         mPaint.setColor(Color.BLACK);
-        canvas.drawLine(0, 200, width, 200, mPaint);
+        canvas.drawLine(0, 0, width, 0, mPaint);
+
+//        for () {
+//
+//        }
+
 
     }
 }

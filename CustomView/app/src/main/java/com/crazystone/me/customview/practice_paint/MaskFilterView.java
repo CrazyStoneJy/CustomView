@@ -41,14 +41,15 @@ public class MaskFilterView extends CustomView {
         maskFilters[1] = new BlurMaskFilter(20, BlurMaskFilter.Blur.INNER);
         maskFilters[2] = new BlurMaskFilter(20, BlurMaskFilter.Blur.SOLID);
         maskFilters[3] = new EmbossMaskFilter(new float[]{0, 1, 1}, 0.2f, 8, 10);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.yellow_man);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.batman);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        canvas.translate(50,0);
         for (int i = 0; i < 4; i++) {
             canvas.save();
-            canvas.translate(0, 300*i);
+            canvas.translate(0, 400 * i);
             mPaint.setMaskFilter(maskFilters[i]);
             canvas.drawBitmap(bitmap, 0, 0, mPaint);
             canvas.restore();
